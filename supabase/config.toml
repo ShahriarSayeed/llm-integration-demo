@@ -1,0 +1,264 @@
+project_id = "stripe-demo-app"
+
+# Windows Hyper-V reserves 54285–54484; entire default Supabase port range is blocked.
+# Remapped to 54200-series which is clear.
+[analytics]
+enabled = false
+
+[api]
+port = 74200
+
+[db]
+port = 74201
+shadow_port = 74210
+
+[studio]
+port = 74202
+
+[inbucket]
+port = 74203
+
+# Match the Vite dev server (vite.config.ts uses port 5050). Without this, GoTrue keeps the CLI
+# default site_url http://127.0.0.1:3000, so password-reset and signup email links point at the
+# wrong origin and redirects are not allow-listed for this app.
+[auth]
+enabled = true
+site_url = "http://localhost:5050"
+additional_redirect_urls = [
+  "http://localhost:5050/**",
+  "http://127.0.0.1:5050/**",
+  "http://10.0.2.2:5050/**",
+]
+
+# Bypass runtime JWT verification (ES256 CryptoKey bug). When using ES256 JWT signing,
+# the gateway passes Uint8Array to jose instead of CryptoKey, causing:
+# "Key for the ES256 algorithm must be of type CryptoKey. Received an instance of Uint8Array"
+# All functions that need auth validate via auth.getUser() (or service role) inside the function.
+[functions.accept-estimate]
+verify_jwt = false
+[functions.billing-cron]
+verify_jwt = false
+[functions.billing-precron]
+verify_jwt = false
+[functions.billing-reminders-cron]
+verify_jwt = false
+# payment-retry-worker drains payment_retry_attempts hourly. Schedule it with
+# pg_cron / Supabase Dashboard cron jobs (see docs/billing-redesign/IMPLEMENTATION_NOTES.md).
+[functions.payment-retry-worker]
+verify_jwt = false
+[functions.billing-sync]
+verify_jwt = false
+[functions.chat]
+verify_jwt = false
+[functions.chat-demo-sales]
+verify_jwt = false
+[functions.create-demo-session]
+verify_jwt = false
+[functions.submit-demo-feedback]
+verify_jwt = false
+[functions.send-desktop-link]
+verify_jwt = false
+[functions.fetch-demo-code]
+verify_jwt = false
+[functions.demo-code-webhook]
+verify_jwt = false
+[functions.ghl-sms-demo-webhook]
+verify_jwt = false
+[functions.check-card-on-file]
+verify_jwt = false
+[functions.check-ghl-subscription]
+verify_jwt = false
+[functions.check-stripe-status]
+verify_jwt = false
+[functions.stripe-connect-callback]
+verify_jwt = false
+[functions.stripe-connect-start]
+verify_jwt = false
+[functions.stripe-connect-webhook]
+verify_jwt = false
+[functions.stripe-disconnect]
+verify_jwt = false
+[functions.connect-email-provider]
+verify_jwt = false
+[functions.card-recollection-create-campaign]
+verify_jwt = false
+[functions.card-recollection-action]
+verify_jwt = false
+# card-recollection-send-wave is invoked by pg_cron with the function_invoke_key.
+[functions.card-recollection-send-wave]
+verify_jwt = false
+[functions.create-card-setup]
+verify_jwt = false
+[functions.create-deposit-checkout]
+verify_jwt = false
+[functions.create-invoice-checkout]
+verify_jwt = false
+[functions.create-public-invoice-checkout]
+verify_jwt = false
+[functions.create-tech-user]
+verify_jwt = false
+[functions.create-tenant-account]
+verify_jwt = false
+[functions.cs-pipeline-sync]
+verify_jwt = false
+[functions.delete-account]
+verify_jwt = false
+[functions.dosage-climate]
+verify_jwt = true
+[functions.get-public-estimate]
+verify_jwt = false
+[functions.get-public-invoice]
+verify_jwt = false
+[functions.get-public-service-report]
+verify_jwt = false
+[functions.get-public-tip]
+verify_jwt = false
+[functions.ghl-auto-sync]
+verify_jwt = false
+[functions.ghl-pipeline-sync]
+verify_jwt = false
+[functions.ghl-proxy]
+verify_jwt = false
+[functions.ghl-retry-worker]
+verify_jwt = false
+[functions.ghl-search-contacts]
+verify_jwt = false
+[functions.ghl-send-sms]
+verify_jwt = false
+[functions.ghl-webhook]
+verify_jwt = false
+[functions.import-customers]
+verify_jwt = false
+
+# Billing operator flows — same ES256 gateway JWT issue as check-card-on-file / create-card-setup;
+# auth is enforced inside each handler via anon.auth.getUser(token).
+[functions.billing-actions]
+verify_jwt = false
+[functions.charge-card-on-file]
+verify_jwt = false
+[functions.mark-invoice-paid]
+verify_jwt = false
+
+[functions.smart-map-customer-columns]
+verify_jwt = false
+
+[functions.preview-customer-import]
+verify_jwt = false
+[functions.invoicing-pipeline-sync]
+verify_jwt = false
+[functions.manage-tenant]
+verify_jwt = false
+[functions.qb-auth-callback]
+verify_jwt = false
+[functions.qb-auth-start]
+verify_jwt = false
+[functions.qb-disconnect]
+verify_jwt = false
+[functions.qb-import-customers]
+verify_jwt = false
+[functions.qbo-list-items]
+verify_jwt = false
+[functions.qb-invoice-status-poll]
+verify_jwt = false
+[functions.seed-trial-tenant]
+verify_jwt = false
+
+# Same ES256 gateway JWT verification issue as other functions; auth is validated
+# inside the function via auth.getUser().
+[functions.clear-sample-data]
+verify_jwt = false
+[functions.send-service-email]
+verify_jwt = false
+[functions.send-invoice-email]
+verify_jwt = false
+[functions.update-tech-user]
+verify_jwt = false
+[functions.send-support-reply]
+verify_jwt = false
+[functions.login-with-recaptcha]
+verify_jwt = false
+[functions.forgot-password-with-recaptcha]
+verify_jwt = false
+[functions.submit-support-ticket]
+verify_jwt = false
+[functions.send-mfa-otp]
+verify_jwt = false
+[functions.verify-mfa-otp]
+verify_jwt = false
+
+[functions.create-saas-checkout]
+verify_jwt = false
+
+[functions.get-saas-checkout-email]
+verify_jwt = false
+
+[functions.check-saas-subscription]
+verify_jwt = false
+
+[functions.signup-from-saas-checkout]
+verify_jwt = false
+
+[functions.stripe-saas-webhook]
+verify_jwt = false
+
+[functions.create-saas-portal-session]
+verify_jwt = false
+
+[functions.reconcile-saas-tenant]
+verify_jwt = false
+
+[functions.provision-ghl-saas-location]
+verify_jwt = false
+
+[functions.fetch-pool-listings]
+verify_jwt = false
+
+[functions.fetch-pool-permits]
+verify_jwt = false
+
+[functions.find-nearby-pool-prospects]
+verify_jwt = false
+
+[functions.skip-trace]
+verify_jwt = false
+
+[functions.geocode-routing-locations]
+verify_jwt = false
+
+[functions.optimize-routes]
+verify_jwt = false
+
+# Post-sale onboarding functions — auth is validated inside each function via auth.getUser()
+[functions.onboarding-save-field]
+verify_jwt = false
+[functions.onboarding-ghl-push]
+verify_jwt = false
+[functions.onboarding-scrape-website]
+verify_jwt = false
+[functions.onboarding-scrape-gbp]
+verify_jwt = false
+[functions.onboarding-data-prep-chat]
+verify_jwt = false
+[functions.onboarding-derive-import-summary]
+verify_jwt = false
+[functions.onboarding-mark-prompted]
+verify_jwt = false
+[functions.onboarding-qa-resolve-flag]
+verify_jwt = false
+# Phone-login Phase 1 — public-facing tech login functions (no JWT required from caller)
+[functions.send-tech-login-code]
+verify_jwt = false
+[functions.verify-tech-login-code]
+verify_jwt = false
+[functions.send-tech-reset-code]
+verify_jwt = false
+
+# Phone-login Phase 1 — authenticated functions (owner token validated inside)
+[functions.create-tech-user-phone]
+verify_jwt = false
+[functions.send-tech-welcome-sms]
+verify_jwt = false
+[functions.delete-tech]
+verify_jwt = false
+[functions.update-tech-phone]
+verify_jwt = false
