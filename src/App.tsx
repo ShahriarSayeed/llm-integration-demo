@@ -5,6 +5,8 @@ import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import Dashboard from './components/dashboard/Dashboard'
 
+import { OpportunityMapExperience } from "./components/opportunity-map/OpportunityMapExperience";
+
 export default function App() {
   const [session, setSession] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -46,6 +48,10 @@ export default function App() {
         <Route
           path="/dashboard"
           element={session ? <Dashboard session={session} /> : <Navigate to="/signin" replace />}
+        />        
+        <Route
+          path="/find-nearby-pool-prospects"
+          element={<OpportunityMapExperience />}
         />
         {/* Catch-all */}
         <Route
