@@ -55,7 +55,7 @@ export default function App() {
           />        
           <Route
             path="/find-nearby-pool-prospects"
-            element={<OpportunityMapExperience />}
+            element={session ? <OpportunityMapExperience /> : <Navigate to="/signin" replace />}            
           />
           {/* Catch-all */}
           <Route
