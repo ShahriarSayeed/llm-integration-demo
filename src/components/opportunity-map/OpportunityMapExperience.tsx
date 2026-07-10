@@ -312,8 +312,8 @@ function MapLayersPanel({ layers, visibility, onToggle }: MapLayersPanelProps) {
 // ─── Main experience ──────────────────────────────────────────────────────────
 
 export function OpportunityMapExperience() {
-  // const { apiKey } = useGoogleMapsKey();
   const apiKey  = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
   // const { data: rawCustomers = [], isLoading: customersLoading } = useCustomers();
   const rawCustomers: any[] = [];
   const customersLoading = false;
@@ -519,9 +519,13 @@ export function OpportunityMapExperience() {
         } else { setSearchedPermits([]); }
 
         if (config.showProspects) {
+          const customersDemo1 = { customers: [{ id: 1001, name: 'Demo Customer', lat: 36.084700, lng: -115.040100 }], radiusMiles: 100 };
+          // const customersDemo = { customers: [{ id: marker.id, name: marker.name, lat: marker.lat, lng: marker.lng }], radiusMiles: config.radiusMiles }
+
           promises.push(
             supabase.functions.invoke("find-nearby-pool-prospects", {
-              body: { customers: [{ id: marker.id, name: marker.name, lat: marker.lat, lng: marker.lng }], radiusMiles: config.radiusMiles },
+              // body: { customers: [{ id: marker.id, name: marker.name, lat: marker.lat, lng: marker.lng }], radiusMiles: config.radiusMiles },
+              body: customersDemo1
             }).then(({ data, error }) => {
               if (error) { toast.error("Prospects search failed (set ANTHROPIC_API_KEY on the server)."); return; }
               const errMsg = (data as { error?: string })?.error;
