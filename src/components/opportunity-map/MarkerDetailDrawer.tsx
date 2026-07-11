@@ -170,7 +170,7 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
 
   return (
     <Sheet open={open} onOpenChange={(v) => !v && handleClose()}>
-      <SheetContent className="w-95! sm:w-105! overflow-y-auto!">
+      <SheetContent className="w-95! sm:w-105! p-2! sm:p-4! overflow-y-auto!">
         <SheetHeader>
           <div className="flex! items-center! gap-2!">
             <div className="h-3! w-3! rounded-full!" style={{ backgroundColor: borderColor }} />
@@ -290,10 +290,10 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
 
           {marker.type !== "customer" && (
             <div className="pt-2! border-t! space-y-2!">
-              <Button size="sm" className="w-full" onClick={() => handleAction("Save as Lead")}>
+              <Button size="sm" className="w-full! flex items-center! justify-center gap-2! bg-blue-600! hover:bg-blue-500! disabled:bg-blue-800! disabled:cursor-not-allowed! text-white! font-medium! text-sm! py-3! rounded-lg! transition-colors!" onClick={() => handleAction("Save as Lead")}>
                 <UserPlus className="h-4! w-4! mr-2!" /> Save as Lead
               </Button>
-              <Button size="sm" variant="secondary" className="w-full" onClick={() => handleAction("Add to Route – Drop off Door Hanger/Flyer")}>
+              <Button size="sm" className="w-full! flex items-center! justify-center gap-2! bg-blue-600! hover:bg-blue-500! disabled:bg-blue-800! disabled:cursor-not-allowed! text-white! font-medium! text-sm! py-3! rounded-lg! transition-colors!" onClick={() => handleAction("Add to Route – Drop off Door Hanger/Flyer")}>
                 <MapPinned className="h-4! w-4! mr-2!" /> Drop off Door Hanger / Flyer
               </Button>
               <div className="grid! grid-cols-2! gap-2!">
@@ -301,7 +301,7 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
                   <StickyNote className="h-4 w-4 mr-1" /> Note
                 </Button>
                 <Button size="sm" variant="outline" onClick={handleSendPostcard} disabled={postcardLoading}>
-                  {postcardLoading ? <Loader2 className="h-4 w-4 mr-1 animate-spin" /> : <Mail className="h-4! w-4! mr-1!" />}
+                  {postcardLoading ? <Loader2 className="h-4! w-4! mr-1! animate-spin!" /> : <Mail className="h-4! w-4! mr-1!" />}
                   Postcard
                 </Button>
               </div>
