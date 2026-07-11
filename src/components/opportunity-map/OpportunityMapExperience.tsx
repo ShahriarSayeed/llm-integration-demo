@@ -140,64 +140,64 @@ function ServiceAreasPanel({ areas = [], searchResults, lastSearchTime, onRefres
   };
 
   return (
-    <div className="bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-lg text-white shadow-xl w-64">
+    <div className="bg-gray-900/90! backdrop-blur-sm! border! border-gray-700! rounded-lg! text-white shadow-xl! w-40! sm:w-64!">
       <button
-        className="flex items-center justify-between w-full px-3 py-2.5 text-sm font-semibold"
+        className="flex! items-center! justify-between! w-full! px-3! py-2.5! text-sm! font-semibold!"
         onClick={() => setCollapsed(!collapsed)}
       >
         <span>Service Areas</span>
         {collapsed
-          ? <ChevronDown className="h-3.5 w-3.5 text-gray-400" />
-          : <ChevronUp className="h-3.5 w-3.5 text-gray-400" />}
+          ? <ChevronDown className="h-3.5! w-3.5! text-gray-400!" />
+          : <ChevronUp className="h-3.5 w-3.5! text-gray-400!" />}
       </button>
 
       {!collapsed && (
-        <div className="border-t border-gray-700 px-3 pb-3">
-          <div className="flex items-center justify-between py-2">
-            <span className="text-xs text-gray-400 font-medium">Service Areas</span>
+        <div className="border-t! border-gray-700! px-3! pb-3!">
+          <div className="flex items-center justify-between py-2!">
+            <span className="text-xs! text-gray-400! font-medium!">Service Areas</span>
             <button
-              className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-0.5"
+              className="text-xs! text-blue-400! hover:text-blue-300! flex! items-center! gap-0.5!"
               onClick={() => setAdding((v) => !v)}
             >
-              <Plus className="h-3 w-3" /> Add
+              <Plus className="h-3! w-3!" /> Add
             </button>
           </div>
 
           {adding && (
-            <div className="mb-2 space-y-1.5">
+            <div className="mb-2! space-y-1.5!">
               <input
                 autoFocus
                 value={cityValue}
                 onChange={(e) => setCityValue(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Escape") { setAdding(false); setCityValue(""); setStateValue(""); } }}
                 placeholder="City (e.g. Las Vegas)"
-                className="w-full text-xs bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                className="w-full! text-xs! bg-gray-800! border! border-gray-600! rounded! px-2.5! py-1.5! text-white! placeholder-gray-500! focus:outline-none! focus:border-blue-500!"
               />
               <input
                 value={stateValue}
                 onChange={(e) => setStateValue(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter") handleAdd(); if (e.key === "Escape") { setAdding(false); setCityValue(""); setStateValue(""); } }}
                 placeholder="STATE (E.G. NV)"
-                className="w-full text-xs bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 uppercase"
+                className="w-full! text-xs! bg-gray-800 border! border-gray-600! rounded! px-2.5! py-1.5! text-white! placeholder-gray-500! focus:outline-none! focus:border-blue-500! uppercase!"
               />
               <button
                 onClick={handleAdd}
-                className="w-full text-xs bg-blue-600 hover:bg-blue-500 text-white px-2 py-1.5 rounded transition-colors flex items-center justify-center gap-1 font-medium"
+                className="w-full! text-xs! bg-blue-600! hover:bg-blue-500! text-white! px-2! py-1.5! rounded! transition-colors! flex items-center! justify-center! gap-1! font-medium!"
               >
-                <Plus className="h-3 w-3" /> Add &amp; sync leads
+                <Plus className="h-3! w-3!" /> Add &amp; sync leads
               </button>
             </div>
           )}
 
           {areas.length === 0 && !adding && (
-            <p className="text-[10px] text-gray-500 py-1">No service areas yet — click + Add to get started</p>
+            <p className="text-[10px]! text-gray-500! py-1!">No service areas yet — click + Add to get started</p>
           )}
 
           {areas.map((area) => (
-            <div key={area.id} className="flex items-start gap-2 py-1.5">
-              <MapPin className="h-3.5 w-3.5 mt-0.5 text-green-400 shrink-0" />
-              <div className="flex-1 min-w-0">
-                <p className="text-xs font-medium leading-tight">{area.name}</p>
+            <div key={area.id} className="flex! items-start! gap-2! py-1.5!">
+              <MapPin className="h-3.5! w-3.5! mt-0.5! text-green-400! shrink-0!" />
+              <div className="flex-1! min-w-0!">
+                <p className="text-xs! font-medium! leading-tight!">{area.name}</p>
                 <p className="text-[10px] text-gray-400 mt-0.5 leading-relaxed">
                   {searchResults ? (
                     <>
@@ -210,20 +210,20 @@ function ServiceAreasPanel({ areas = [], searchResults, lastSearchTime, onRefres
                   )}
                 </p>
               </div>
-              <div className="flex items-center gap-1 shrink-0">
+              <div className="flex! items-center! gap-1! shrink-0!">
                 <button
-                  className="p-1 rounded hover:bg-gray-700 text-gray-400 hover:text-white transition-colors"
+                  className="p-1! rounded! hover:bg-gray-700! text-gray-400! hover:text-white! transition-colors!"
                   title="Refresh"
                   onClick={onRefresh}
                 >
-                  <RefreshCw className="h-3 w-3" />
+                  <RefreshCw className="h-3! w-3!" />
                 </button>
                 <button
-                  className="p-1 rounded hover:bg-gray-700 text-gray-400 hover:text-red-400 transition-colors"
+                  className="p-1! rounded! hover:bg-gray-700! text-gray-400! hover:text-red-400! transition-colors!"
                   title="Remove area"
                   onClick={() => onRemove(area.id)}
                 >
-                  <Trash2 className="h-3 w-3" />
+                  <Trash2 className="h-3! w-3!" />
                 </button>
               </div>
             </div>
@@ -264,39 +264,39 @@ function MapLayersPanel({ layers, visibility, onToggle }: MapLayersPanelProps) {
   const right = layers.slice(3);
 
   return (
-    <div className="bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-lg text-white shadow-xl w-52">
+    <div className="bg-gray-900/90! backdrop-blur-sm! border! border-gray-700! rounded-lg! text-white! shadow-xl! w-40! sm:w-64!">
       <button
-        className="flex items-center justify-between w-full px-3 py-2.5 text-sm font-semibold"
+        className="flex! items-center! justify-between! w-full! px-3! py-2.5! text-sm! font-semibold!"
         onClick={() => setCollapsed(!collapsed)}
       >
         <span>Map Layers</span>
         {collapsed
-          ? <ChevronDown className="h-3.5 w-3.5 text-gray-400" />
-          : <ChevronUp className="h-3.5 w-3.5 text-gray-400" />}
+          ? <ChevronDown className="h-3.5! w-3.5! text-gray-400!" />
+          : <ChevronUp className="h-3.5! w-3.5! text-gray-400!" />}
       </button>
 
       {!collapsed && (
-        <div className="border-t border-gray-700 px-3 py-2 grid grid-cols-2 gap-x-2">
+        <div className="border-t! border-gray-700! px-3! py-2! grid! grid-cols-2! gap-x-2!">
           {[left, right].map((col, ci) => (
-            <div key={ci} className="space-y-1.5">
+            <div key={ci} className="space-y-1.5!">
               {col.map((layer) => {
                 const on = visibility[layer.key];
                 return (
-                  <div key={layer.key} className="flex items-center gap-1.5">
+                  <div key={layer.key} className="flex! items-center! gap-1.5!">
                     <div
-                      className="h-2 w-2 rounded-full shrink-0"
+                      className="h-2! w-2! rounded-full! shrink-0!"
                       style={{ backgroundColor: on ? layer.color : "#6b7280" }}
                     />
-                    <span className={`text-[10px] flex-1 truncate ${on ? "text-white" : "text-gray-500"}`}>
+                    <span className={`text-[10px]! flex-1! truncate! ${on ? "text-white!" : "text-gray-500!"}`}>
                       {layer.label}
-                      <span className="text-gray-500 ml-0.5">· {layer.count}</span>
+                      <span className="text-gray-500! ml-0.5!">· {layer.count}</span>
                     </span>
                     <button
-                      className="shrink-0 text-gray-500 hover:text-white transition-colors"
+                      className="shrink-0! text-gray-500! hover:text-white! transition-colors!"
                       onClick={() => onToggle(layer.key)}
                       title={on ? "Hide layer" : "Show layer"}
                     >
-                      {on ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
+                      {on ? <Eye className="h-3! w-3!" /> : <EyeOff className="h-3! w-3!" />}
                     </button>
                   </div>
                 );
@@ -313,6 +313,8 @@ function MapLayersPanel({ layers, visibility, onToggle }: MapLayersPanelProps) {
 
 export function OpportunityMapExperience() {
   const apiKey  = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+  // temp
+  // const apiKey  = "safsafsafa";
 
   // const { data: rawCustomers = [], isLoading: customersLoading } = useCustomers();
   const rawCustomers: any[] = [];
@@ -567,9 +569,9 @@ export function OpportunityMapExperience() {
   }, [selectedCustomer]);
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative! w-full! h-full! overflow-hidden!">
       {geocodeError && (
-        <div className="absolute top-0 left-0 right-0 z-30 bg-destructive/90 text-destructive-foreground text-xs px-4 py-2 text-center">
+        <div className="absolute! top-0! left-0! right-0 z-30! bg-destructive/90! text-destructive-foreground! text-xs! px-4 py-2! text-center!">
           Customer addresses could not be geocoded — showing demo markers instead.
         </div>
       )}
@@ -586,13 +588,13 @@ export function OpportunityMapExperience() {
           onMapClick={handleMapClick}
         />
       ) : (
-        <div className="flex items-center justify-center h-full bg-gray-900">
-          <p className="text-sm text-gray-400">Loading map…</p>
+        <div className="flex! items-center! justify-center! h-full! bg-gray-900!">
+          <p className="text-sm! text-gray-400!">Loading map…</p>
         </div>
       )}
 
       {/* Service Areas — top-left overlay */}
-      <div className="absolute top-3 left-3 z-20">
+      <div className="absolute! top-2! sm:top-3! left-3! z-20!">
         <ServiceAreasPanel
           areas={serviceAreas}
           searchResults={searchResults}
@@ -604,7 +606,7 @@ export function OpportunityMapExperience() {
       </div>
 
       {/* Map Layers — top-right overlay */}
-      <div className="absolute top-3 right-3 z-20">
+      <div className="absolute! top-48! left-3! z-20!">
         <MapLayersPanel
           layers={layerRows}
           visibility={layerVisibility}
@@ -614,52 +616,52 @@ export function OpportunityMapExperience() {
 
       {/* Drop-pin mode hint */}
       {dropPinMode && (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none">
-          <div className="bg-gray-900/90 text-white text-sm font-medium px-4 py-2 rounded-full border border-teal-500 shadow-lg">
+        <div className="absolute! top-1/2! left-1/2! -translate-x-1/2! -translate-y-1/2! z-30! pointer-events-none!">
+          <div className="bg-gray-900/90! text-white! text-sm! font-medium! px-4! py-2! rounded-full! border! border-teal-500! shadow-lg!">
             Click anywhere on the map to drop a marketing pin
           </div>
         </div>
       )}
 
       {/* Bottom toolbar */}
-      <div className="absolute bottom-4 left-0 right-0 flex items-end justify-between px-4 z-20 pointer-events-none">
-        <div className="flex gap-2 pointer-events-auto">
+      <div className="absolute! bottom-4! left-0! right-12! flex! items-end! justify-between! px-4! z-20! pointer-events-none!">
+        <div className="flex! gap-2! pointer-events-auto! text-nowrap!">
           <button
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-medium shadow-lg border transition-colors ${
+            className={`flex! items-center! gap-1.5! px-3! py-2! rounded-full! text-sm! font-medium! shadow-lg! border! transition-colors! ${
               dropPinMode
-                ? "bg-teal-600 border-teal-500 text-white"
-                : "bg-white/90 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white"
+                ? "bg-teal-600! border-teal-500! text-white!"
+                : "bg-white/90! backdrop-blur-sm! border-gray-200! text-gray-700! hover:bg-white!"
             }`}
             onClick={() => setDropPinMode((v) => !v)}
           >
-            <MapPinned className="h-4 w-4" />
+            <MapPinned className=" h-4! w-4!" />
             Drop pin
           </button>
           <button
-            className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 text-gray-700 hover:bg-white text-sm font-medium shadow-lg transition-colors"
+            className="flex! items-center! gap-1.5! px-3! py-2! rounded-full! bg-white/90! backdrop-blur-sm! border! border-gray-200! text-gray-700! hover:bg-white! text-sm! font-medium! shadow-lg! transition-colors!"
             onClick={() => setScriptsOpen(true)}
           >
-            <FileText className="h-4 w-4" />
+            <FileText className="h-4! w-4!" />
             Scripts
           </button>
         </div>
 
-        <div className="flex items-end gap-3 pointer-events-auto">
+        <div className="flex! invisible! sm:visible! items-end! gap-3! pointer-events-auto! text-nowrap!">
           {/* 🔧 BUILD: Quota bar — currently static. Future: track actual skip-trace API calls per tenant */}
-          <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 shadow-lg">
-            <p className="text-[10px] text-gray-500 font-medium">25,000 left</p>
-            <div className="mt-1 h-1 w-28 bg-gray-200 rounded-full overflow-hidden">
-              <div className="h-full bg-blue-500 rounded-full" style={{ width: "0%" }} />
+          <div className="bg-white/90! backdrop-blur-sm! border! border-gray-200! rounded-lg! px-3! py-2! shadow-lg!">
+            <p className="text-[10px]! text-gray-500! font-medium!">25,000 left</p>
+            <div className="mt-1! h-1! w-28! bg-gray-200! rounded-full! overflow-hidden!">
+              <div className="h-full! bg-blue-500! rounded-full!" style={{ width: "0%" }} />
             </div>
-            <p className="text-[9px] text-gray-400 mt-0.5">0 / 25,000</p>
+            <p className="text-[9px]! text-gray-400! mt-0.5!">0 / 25,000</p>
           </div>
           {/* 🔧 BUILD: AI Assistant — coming soon */}
           <button
-            className="h-11 w-11 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg flex items-center justify-center transition-colors"
+            className="h-11! w-11! rounded-full! bg-blue-600! hover:bg-blue-700! text-white! shadow-lg! flex! items-center! justify-center! transition-colors!"
             onClick={() => toast.info("AI Assistant — coming soon")}
             title="AI Assistant"
           >
-            <Bot className="h-5 w-5" />
+            <Bot className="h-5! w-5!" />
           </button>
         </div>
       </div>

@@ -170,25 +170,25 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
 
   return (
     <Sheet open={open} onOpenChange={(v) => !v && handleClose()}>
-      <SheetContent className="w-[380px] sm:w-[420px] overflow-y-auto">
+      <SheetContent className="w-95! sm:w-105! overflow-y-auto!">
         <SheetHeader>
-          <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full" style={{ backgroundColor: borderColor }} />
-            <SheetTitle className="text-base">{marker.type === "customer" ? marker.name : marker.address}</SheetTitle>
+          <div className="flex! items-center! gap-2!">
+            <div className="h-3! w-3! rounded-full!" style={{ backgroundColor: borderColor }} />
+            <SheetTitle className="text-base!">{marker.type === "customer" ? marker.name : marker.address}</SheetTitle>
           </div>
         </SheetHeader>
 
-        <div className="mt-4 space-y-4">
-          <div className="flex items-start gap-2 text-sm">
-            <MapPin className="h-4 w-4 mt-0.5 text-muted-foreground shrink-0" />
+        <div className="mt-4! space-y-4!">
+          <div className="flex! items-start! gap-2! text-sm!">
+            <MapPin className="h-4! w-4! mt-0.5! text-muted-foreground! shrink-0!" />
             <span>{marker.address}</span>
           </div>
 
           {marker.type === "customer" && (
             <>
               {typeof meta.monthlyRevenue === "number" && (
-                <div className="flex items-center gap-2 text-sm">
-                  <DollarSign className="h-4 w-4 text-muted-foreground" />
+                <div className="flex! items-center! gap-2! text-sm!">
+                  <DollarSign className="h-4! w-4! text-muted-foreground!" />
                   <span>${meta.monthlyRevenue}/mo</span>
                 </div>
               )}
@@ -196,15 +196,15 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
                 <Badge variant="secondary">{meta.serviceDay}</Badge>
               )}
               {typeof meta.techName === "string" && (
-                <p className="text-xs text-muted-foreground">Tech: {meta.techName}</p>
+                <p className="text-xs! text-muted-foreground!">Tech: {meta.techName}</p>
               )}
               {nearbyStats && (
-                <div className="bg-muted/50 rounded-lg p-3 space-y-1">
-                  <p className="text-xs font-medium text-foreground">Nearby Opportunities</p>
-                  <div className="flex gap-3 text-xs">
-                    <span className="text-red-500">{nearbyStats.listings} listings</span>
-                    <span className="text-blue-500">{nearbyStats.permits} permits</span>
-                    <span className="text-orange-500">{nearbyStats.prospects} prospects</span>
+                <div className="bg-muted/50! rounded-lg! p-3! space-y-1!">
+                  <p className="text-xs! font-medium! text-foreground!">Nearby Opportunities</p>
+                  <div className="flex! gap-3! text-xs!">
+                    <span className="text-red-500!">{nearbyStats.listings} listings</span>
+                    <span className="text-blue-500!">{nearbyStats.permits} permits</span>
+                    <span className="text-orange-500!">{nearbyStats.prospects} prospects</span>
                   </div>
                 </div>
               )}
@@ -213,55 +213,55 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
 
           {marker.type === "listing" && (
             <>
-              <div className="grid grid-cols-2 gap-2 text-sm">
-                <div><span className="text-muted-foreground">Price:</span> ${Number(meta.listPrice ?? 0).toLocaleString()}</div>
-                <div><span className="text-muted-foreground">Beds:</span> {String(meta.beds ?? "")}</div>
-                <div><span className="text-muted-foreground">Baths:</span> {String(meta.baths ?? "")}</div>
-                <div><span className="text-muted-foreground">Sqft:</span> {Number(meta.sqft ?? 0).toLocaleString()}</div>
+              <div className="grid! grid-cols-2! gap-2! text-sm!">
+                <div><span className="text-muted-foreground!">Price:</span> ${Number(meta.listPrice ?? 0).toLocaleString()}</div>
+                <div><span className="text-muted-foreground!">Beds:</span> {String(meta.beds ?? "")}</div>
+                <div><span className="text-muted-foreground!">Baths:</span> {String(meta.baths ?? "")}</div>
+                <div><span className="text-muted-foreground!">Sqft:</span> {Number(meta.sqft ?? 0).toLocaleString()}</div>
               </div>
               <Badge variant="outline">{String(meta.status ?? "")}</Badge>
-              <p className="text-xs text-muted-foreground">Source: {String(meta.source ?? "")}</p>
+              <p className="text-xs! text-muted-foreground!">Source: {String(meta.source ?? "")}</p>
               {typeof meta.listingUrl === "string" && meta.listingUrl && meta.listingUrl !== "#" && (
-                <Button variant="outline" size="sm" className="w-full" asChild>
+                <Button variant="outline" size="sm" className="w-full!" asChild>
                   <a href={meta.listingUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="h-4 w-4 mr-2" />
+                    <ExternalLink className="h-4! w-4! mr-2!" />
                     View listing
                   </a>
                 </Button>
               )}
               {meta.distanceMiles != null && typeof meta.distanceMiles === "number" && (
-                <p className="text-xs text-muted-foreground">{meta.distanceMiles.toFixed(1)} mi from nearest customer</p>
+                <p className="text-xs! text-muted-foreground!">{meta.distanceMiles.toFixed(1)} mi from nearest customer</p>
               )}
             </>
           )}
 
           {marker.type === "permit" && (
             <>
-              <p className="text-sm">{String(meta.description ?? "")}</p>
-              <div className="grid grid-cols-2 gap-2 text-sm">
-                <div><span className="text-muted-foreground">Date:</span> {String(meta.permitDate ?? "")}</div>
-                <div><span className="text-muted-foreground">Status:</span> {String(meta.status ?? "")}</div>
+              <p className="text-sm!">{String(meta.description ?? "")}</p>
+              <div className="grid! grid-cols-2! gap-2! text-sm!">
+                <div><span className="text-muted-foreground!">Date:</span> {String(meta.permitDate ?? "")}</div>
+                <div><span className="text-muted-foreground!">Status:</span> {String(meta.status ?? "")}</div>
               </div>
               {meta.contractor && (
-                <p className="text-xs text-muted-foreground">Contractor: {String(meta.contractor)}</p>
+                <p className="text-xs! text-muted-foreground!">Contractor: {String(meta.contractor)}</p>
               )}
               {meta.estimatedValue != null && (
-                <p className="text-xs text-muted-foreground">Est. Value: ${Number(meta.estimatedValue).toLocaleString()}</p>
+                <p className="text-xs! text-muted-foreground!">Est. Value: ${Number(meta.estimatedValue).toLocaleString()}</p>
               )}
             </>
           )}
 
           {marker.type === "prospect" && (
             <>
-              <div className="flex items-center gap-2">
+              <div className="flex! items-center! gap-2!">
                 <Badge variant={meta.verified ? "default" : "secondary"}>
                   {meta.verified ? "Verified Pool" : "Likely Pool"}
                 </Badge>
-                <span className="text-sm font-medium">{String(meta.confidence ?? "")}% confidence</span>
+                <span className="text-sm! font-medium!">{String(meta.confidence ?? "")}% confidence</span>
               </div>
-              <p className="text-sm text-muted-foreground">{String(meta.reason ?? "")}</p>
+              <p className="text-sm! text-muted-foreground!">{String(meta.reason ?? "")}</p>
               {typeof meta.nearestCustomer === "string" && (
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs! text-muted-foreground!">
                   Nearest: {meta.nearestCustomer} ({typeof meta.distanceMiles === "number" ? meta.distanceMiles.toFixed(1) : "?"} mi)
                 </p>
               )}
@@ -270,9 +270,9 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
 
           {marker.type === "poolbuilder" && (
             <>
-              <p className="text-sm text-muted-foreground">Pool construction company</p>
+              <p className="text-sm! text-muted-foreground!">Pool construction company</p>
               {typeof meta.phone === "string" && (
-                <a href={`tel:${meta.phone}`} className="text-sm text-primary hover:underline block">{meta.phone}</a>
+                <a href={`tel:${meta.phone}`} className="text-sm! text-primary! hover:underline block!">{meta.phone}</a>
               )}
             </>
           )}
@@ -281,7 +281,7 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
             <>
               <Badge variant="secondary">Marketing Pin</Badge>
               {typeof meta.droppedAt === "string" && (
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs! text-muted-foreground!">
                   Dropped: {new Date(meta.droppedAt).toLocaleString()}
                 </p>
               )}
@@ -289,19 +289,19 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
           )}
 
           {marker.type !== "customer" && (
-            <div className="pt-2 border-t space-y-2">
+            <div className="pt-2! border-t! space-y-2!">
               <Button size="sm" className="w-full" onClick={() => handleAction("Save as Lead")}>
-                <UserPlus className="h-4 w-4 mr-2" /> Save as Lead
+                <UserPlus className="h-4! w-4! mr-2!" /> Save as Lead
               </Button>
               <Button size="sm" variant="secondary" className="w-full" onClick={() => handleAction("Add to Route – Drop off Door Hanger/Flyer")}>
-                <MapPinned className="h-4 w-4 mr-2" /> Drop off Door Hanger / Flyer
+                <MapPinned className="h-4! w-4! mr-2!" /> Drop off Door Hanger / Flyer
               </Button>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid! grid-cols-2! gap-2!">
                 <Button size="sm" variant="outline" onClick={() => handleAction("Add Note")}>
                   <StickyNote className="h-4 w-4 mr-1" /> Note
                 </Button>
                 <Button size="sm" variant="outline" onClick={handleSendPostcard} disabled={postcardLoading}>
-                  {postcardLoading ? <Loader2 className="h-4 w-4 mr-1 animate-spin" /> : <Mail className="h-4 w-4 mr-1" />}
+                  {postcardLoading ? <Loader2 className="h-4 w-4 mr-1 animate-spin" /> : <Mail className="h-4! w-4! mr-1!" />}
                   Postcard
                 </Button>
               </div>
@@ -314,59 +314,59 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
               >
                 {skipTraceLoading ? (
                   <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" /> Tracing...
+                    <Loader2 className="h-4! w-4! mr-2! animate-spin!" /> Tracing...
                   </>
                 ) : (
                   <>
-                    <Search className="h-4 w-4 mr-2" /> Skip Trace the Lead
+                    <Search className="h-4! w-4! mr-2!" /> Skip Trace the Lead
                   </>
                 )}
               </Button>
 
               {skipTraceResults && skipTraceResults.length > 0 && (
-                <div className="bg-muted/50 rounded-lg p-3 space-y-3">
-                  <p className="text-xs font-semibold text-foreground uppercase tracking-wider">
+                <div className="bg-muted/50! rounded-lg! p-3 space-y-3!">
+                  <p className="text-xs! font-semibold! text-foreground uppercase! tracking-wider!">
                     Skip Trace Results ({skipTraceResults.length})
                   </p>
                   {skipTraceResults.map((person, i) => (
-                    <div key={i} className="border-b border-border pb-2 last:border-0 last:pb-0 space-y-1">
-                      <div className="flex items-center gap-2 text-sm font-medium">
-                        <User className="h-3.5 w-3.5 text-muted-foreground" />
+                    <div key={i} className="border-b! border-border! pb-2! last:border-0! last:pb-0! space-y-1!">
+                      <div className="flex! items-center! gap-2! text-sm! font-medium!">
+                        <User className="h-3.5! w-3.5! text-muted-foreground!" />
                         <span>{person.name}</span>
-                        {person.age && <span className="text-xs text-muted-foreground">{person.age}</span>}
-                        {person.gender && <span className="text-xs text-muted-foreground">• {person.gender}</span>}
+                        {person.age && <span className="text-xs! text-muted-foreground!">{person.age}</span>}
+                        {person.gender && <span className="text-xs! text-muted-foreground!">• {person.gender}</span>}
                       </div>
                       {person.phones.length > 0 && (
-                        <div className="space-y-0.5 ml-5">
+                        <div className="space-y-0.5! ml-5!">
                           {person.phones.slice(0, 3).map((ph, j) => (
                             <a
                               key={j}
                               href={`tel:${ph.phone_number}`}
-                              className="flex items-center gap-1.5 text-xs text-primary hover:underline"
+                              className="flex! items-center! gap-1.5! text-xs! text-primary! hover:underline!"
                             >
-                              <Phone className="h-3 w-3" />
+                              <Phone className="h-3! w-3!" />
                               {ph.phone_number}
-                              <span className="text-muted-foreground">({ph.line_type})</span>
+                              <span className="text-muted-foreground!">({ph.line_type})</span>
                             </a>
                           ))}
                         </div>
                       )}
                       {person.emails.length > 0 && (
-                        <div className="space-y-0.5 ml-5">
+                        <div className="space-y-0.5! ml-5!">
                           {person.emails.slice(0, 2).map((email, j) => (
                             <a
                               key={j}
                               href={`mailto:${email}`}
-                              className="flex items-center gap-1.5 text-xs text-primary hover:underline"
+                              className="flex! items-center! gap-1.5! text-xs! text-primary! hover:underline!"
                             >
-                              <Mail className="h-3 w-3" />
+                              <Mail className="h-3! w-3!" />
                               {email}
                             </a>
                           ))}
                         </div>
                       )}
                       {person.phones.length === 0 && person.emails.length === 0 && (
-                        <p className="text-xs text-muted-foreground ml-5">No contact info found</p>
+                        <p className="text-xs! text-muted-foreground! ml-5!">No contact info found</p>
                       )}
                     </div>
                   ))}
@@ -374,8 +374,8 @@ export function MarkerDetailDrawer({ marker, open, onClose, nearbyStats }: Props
               )}
 
               {skipTraceResults && skipTraceResults.length === 0 && (
-                <div className="bg-muted/50 rounded-lg p-3">
-                  <p className="text-xs text-muted-foreground text-center">No records found at this address</p>
+                <div className="bg-muted/50! rounded-lg! p-3!">
+                  <p className="text-xs! text-muted-foreground! text-center!">No records found at this address</p>
                 </div>
               )}
             </div>

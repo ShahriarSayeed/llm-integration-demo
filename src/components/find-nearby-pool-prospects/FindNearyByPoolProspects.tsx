@@ -613,8 +613,8 @@ export function OpportunityMapExperience() {
 
       {/* Drop-pin mode hint */}
       {dropPinMode && (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none">
-          <div className="bg-gray-900/90 text-white text-sm font-medium px-4 py-2 rounded-full border border-teal-500 shadow-lg">
+        <div className="absolute! top-1/2! left-1/2! -translate-x-1/2! -translate-y-1/2! z-30! pointer-events-none!">
+          <div className="bg-gray-900/90! text-white! text-sm! font-medium! px-4! py-2! rounded-full! border! border-teal-500! shadow-lg!">
             Click anywhere on the map to drop a marketing pin
           </div>
         </div>

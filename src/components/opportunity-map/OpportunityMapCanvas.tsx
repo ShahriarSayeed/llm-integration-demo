@@ -162,5 +162,5 @@ export function OpportunityMapCanvas({ markers, filters, apiKey, onMarkerClick, 
     void placeAllMarkers();
   }, [mapReady, markers, filters.radiusMiles, selectedCustomerId, onMarkerClick]);
 
-  return <div ref={mapRef} className="w-full h-full min-h-[500px]" style={{ cursor: dropPinMode ? "crosshair" : undefined }} />;
+  return <div ref={mapRef} className="w-full! h-full! min-h-screen!" style={{ cursor: dropPinMode ? "crosshair" : undefined }} />;
 }
