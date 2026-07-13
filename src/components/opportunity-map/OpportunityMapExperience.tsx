@@ -668,18 +668,19 @@ export function OpportunityMapExperience() {
 
       {/* Scripts dialog */}
       <Dialog open={scriptsOpen} onOpenChange={setScriptsOpen}>
-        <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
+        <DialogContent className="max-w-lg! max-h-[80vh]! px-2! py-4! overflow-y-auto!">
           <DialogHeader>
             <DialogTitle>Marketing Scripts</DialogTitle>
           </DialogHeader>
-          <div className="space-y-4 mt-2">
+          <div className="space-y-4! mt-2!">
             {SCRIPTS.map((s) => (
-              <div key={s.title} className="rounded-lg border p-4 space-y-2">
-                <p className="text-sm font-semibold">{s.title}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
+              <div key={s.title} className="rounded-lg! border! p-4! space-y-2!">
+                <p className="text-sm! font-semibold!">{s.title}</p>
+                <p className="text-sm! text-muted-foreground! leading-relaxed!">{s.body}</p>
                 <Button
                   size="sm"
                   variant="outline"
+                  className="px-4! py-2!"
                   onClick={() => { navigator.clipboard.writeText(s.body); toast.success("Copied to clipboard"); }}
                 >
                   Copy
