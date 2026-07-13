@@ -33,7 +33,7 @@ supabase start
 
 ```bash
 cp .env.example .env
-# Fill in VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY from `supabase status`
+# Fill in VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY from `supabase status`
 ```
 
 ### 4. (Optional) Disable email confirmation for local dev

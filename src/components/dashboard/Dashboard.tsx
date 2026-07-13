@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../../lib/supabase'
+import { supabase } from '../integrations/supabase/client'
 
 /* ─── helper: invoke an edge function and follow the redirect URL if present ─ */
 async function invokeEdgeFn(name, body = {}) {

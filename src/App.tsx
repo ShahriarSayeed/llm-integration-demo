@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { supabase } from './lib/supabase'
+import { supabase } from "./components/integrations/supabase/client";
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import Dashboard from './components/dashboard/Dashboard'

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { supabase } from '../../lib/supabase'
+import { supabase } from '../integrations/supabase/client'
 
 export default function SignIn() {
   const [email,    setEmail]    = useState('')
